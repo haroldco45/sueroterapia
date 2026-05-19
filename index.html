@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Normatividad Sueroterapia Colombia</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#10b981">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="icon.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans flex flex-col min-h-screen">
+
+    <header class="bg-emerald-600 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i data-lucide="shield-check" class="w-6 h-6"></i>
+                <h1 class="text-xl font-bold tracking-tight">LexSuero CO</h1>
+            </div>
+            <button id="installBtn" class="hidden bg-white text-emerald-700 px-3 py-1.5 rounded-lg text-sm font-semibold shadow hover:bg-emerald-50 transition flex items-center gap-1">
+                <i data-lucide="download" class="w-4 h-4"></i> Instalar App
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-4xl w-full mx-auto px-4 py-6">
+        
+        <div id="geoAlert" class="mb-6 bg-blue-50 border border-blue-200 text-blue-800 p-4 rounded-xl flex items-start gap-3 shadow-sm">
+            <i data-lucide="map-pin" class="w-5 h-5 mt-0.5 text-blue-600 shrink-0"></i>
+            <div>
+                <p class="font-semibold text-sm">Ubicación del dispositivo:</p>
+                <p id="geoStatus" class="text-xs text-blue-700 mt-0.5">Obteniendo coordenadas actuales...</p>
+            </div>
+        </div>
+
+        <p class="text-slate-600 mb-6 text-sm md:text-base">
+            Consulte de forma rápida el marco legal, técnico y de seguridad exigido por las autoridades sanitarias de Colombia para la práctica de la sueroterapia e hidratación intravenosa.
+        </p>
+
+        <div class="space-y-4">
+            
+            <section class="bg-white p-5 rounded-xl shadow-sm border border-slate-100">
+                <div class="flex items-center gap-3 border-b border-slate-100 pb-3 mb-3">
+                    <div class="bg-emerald-100 text-emerald-700 p-2 rounded-lg">
+                        <i data-lucide="building-2" class="w-5 h-5"></i>
+                    </div>
+                    <h2 class="text-lg font-bold text-slate-900">1. Habilitación del Establecimiento</h2>
+                </div>
+                <p class="text-sm leading-relaxed text-slate-600">
+                    Bajo la <strong class="text-slate-900">Resolución 3100 de 2019</strong> de MinSalud, el lugar debe estar inscrito y avalado ante la Secretaría de Salud departamental como servicio habilitado. Requiere infraestructura clínica con superficies lavables, lavamanos y un plan riguroso de manejo de residuos hospitalarios guardianes de agujas (PGIRH).
+                </p>
+            </section>
+
+            <section class="bg-white p-5 rounded-xl shadow-sm border border-slate-100">
+                <div class="flex items-center gap-3 border-b border-slate-100 pb-3 mb-3">
+                    <div class="bg-emerald-100 text-emerald-700 p-2 rounded-lg">
+                        <i data-lucide="user-check" class="w-5 h-5"></i>
+                    </div>
+                    <h2 class="text-lg font-bold text-slate-900">2. Personal Idóneo (ReThus)</h2>
+                </div>
+                <p class="text-sm leading-relaxed text-slate-600">
+                    Al ser un procedimiento invasivo, requiere valoración previa y orden de un <strong class="text-slate-900">Médico Graduado</strong>. La canalización y suministro del suero debe ser ejecutada estrictamente por profesionales inscritos en el <strong class="text-slate-900">ReThus</strong> (Médicos o Enfermeros Profesionales).
+                </p>
+            </section>
+
+            <section class="bg-white p-5 rounded-xl shadow-sm border border-slate-100">
+                <div class="flex items-center gap-3 border-b border-slate-100 pb-3 mb-3">
+                    <div class="bg-emerald-100 text-emerald-700 p-2 rounded-lg">
+                        <i data-lucide="pill" class="w-5 h-5"></i>
+                    </div>
+                    <h2 class="text-lg font-bold text-slate-900">3. Control Sanitario INVIMA</h2>
+                </div>
+                <p class="text-sm leading-relaxed text-slate-600">
+                    Queda prohibido el uso de mezclas ("cócteles") preparadas de forma masiva sin un registro de producción específico. Tanto la solución base (solución salina) como los viales añadidos deben contar con <strong class="text-slate-900">Registro Sanitario INVIMA vigente</strong> expuesto al consumidor.
+                </p>
+            </section>
+        </div>
+
+        <section class="bg-white mt-6 p-5 rounded-xl shadow-sm border border-emerald-100 bg-gradient-to-br from-white to-emerald-50/30">
+            <h3 class="text-base font-bold text-slate-900 flex items-center gap-2 mb-2">
+                <i data-lucide="help-circle" class="w-5 h-5 text-emerald-600"></i> ¿Deseas reportar o consultar un servicio?
+            </h3>
+            <p class="text-xs text-slate-600 mb-4">
+                Envía un reporte formal a soporte con la información normativa y las coordenadas exactas de tu ubicación actual de manera automatizada.
+            </p>
+            <button id="whatsappBtn" class="w-full bg-emerald-600 text-white font-semibold text-sm py-3 rounded-xl shadow hover:bg-emerald-700 transition flex items-center justify-center gap-2">
+                <i data-lucide="message-circle" class="w-4 h-4"></i> Enviar Consulta vía WhatsApp
+            </button>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 text-center py-4 text-xs border-t border-slate-800 mt-auto">
+        <div class="px-4">
+            <p>&copy; 2026. Todos los derechos reservados.</p>
+            <p class="font-semibold text-emerald-400 mt-1">Hecha por Vibras Positivas HM</p>
+        </div>
+    </footer>
+
+    <script>
+        // Inicializar Iconos de Lucide
+        lucide.createIcons();
+
+        let currentCoords = "No disponible";
+
+        // Funcionalidad de Geolocalización integrada en la interfaz
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const lat = position.coords.latitude.toFixed(6);
+                    const lon = position.coords.longitude.toFixed(6);
+                    currentCoords = `Lat: ${lat}, Lon: ${lon}`;
+                    document.getElementById('geoStatus').innerHTML = `📍 Conectado en tiempo real <br><span class="font-mono text-slate-900">${currentCoords}</span>`;
+                },
+                (error) => {
+                    document.getElementById('geoStatus').textContent = "Permiso de ubicación denegado o no disponible.";
+                }
+            );
+        } else {
+            document.getElementById('geoStatus').textContent = "Tu navegador no soporta geolocalización.";
+        }
+
+        // Configuración del botón de WhatsApp con envío de Geolocalización
+        document.getElementById('whatsappBtn').addEventListener('click', () => {
+            const numeroTelefono = "573103632185"; // Teléfono destino configurado
+            const textoMensaje = `Hola, deseo realizar una consulta sobre la normatividad de Sueroterapia en Colombia.\n\n📍 Mi ubicación de consulta actual es:\nhttps://www.google.com/maps?q=${currentCoords.replace('Lat: ', '').replace(' Lon: ', '')}\n\nEnviado desde LexSuero PWA.`;
+            const urlWhatsApp = `https://api.whatsapp.com/send?phone=${numeroTelefono}&text=${encodeURIComponent(textoMensaje)}`;
+            window.open(urlWhatsApp, '_blank');
+        });
+
+        // Registro del Service Worker para funcionamiento PWA (Offline)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('Service Worker registrado con éxito', reg))
+                    .catch(err => console.error('Error al registrar el Service Worker', err));
+            });
+        }
+
+        // Captura del evento de instalación de la PWA
+        let deferredPrompt;
+        const installBtn = document.getElementById('installBtn');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            installBtn.classList.remove('hidden'); // Muestra el botón de instalación si cumple los requisitos
+        });
+
+        installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') {
+                    console.log('El usuario instaló la aplicación');
+                }
+                deferredPrompt = null;
+                installBtn.classList.add('hidden');
+            }
+        });
+
+        window.addEventListener('appinstalled', () => {
+            console.log('PWA instalada de forma exitosa');
+            installBtn.classList.add('hidden');
+        });
+    </script>
+</body>
+</html>
